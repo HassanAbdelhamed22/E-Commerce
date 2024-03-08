@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import { BaseUrl } from "../../modal";
 import { useProduct } from "../../useProduct";
 import Loading from "../Loading";
-import { useQuery } from "react-query";
 import ProductUi from "../Products/ProductUi";
+import img from "../../Assets/no-product.png";
 
 export default function SubCategories() {
   let { id } = useParams();
@@ -35,10 +35,9 @@ export default function SubCategories() {
     );
   } else {
     return (
-      <div className=" container">
-        <h2 className="d-flex align-items-center justify-content-center text-main fw-bold my-5">
-          No Items in this Category
-        </h2>
+      <div className=" container d-flex align-items-center justify-content-center  my-5 flex-column">
+        <h2 className="text-main fw-bold">No Items in this Category</h2>
+        <img src={img} alt="no items" className="empty-img" />
       </div>
     );
   }

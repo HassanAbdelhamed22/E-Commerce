@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { userContext } from "../../UserContext";
 import {
+  Cashcheckout,
   checkout,
   deleteCart,
   getCart,
@@ -11,11 +12,14 @@ import {
 import Navbar from "./../Navbar/Navbar";
 import Loading from "./../Loading";
 import emptyImg from "../../Assets/preview.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
   let [details, setDetails] = useState("");
   let [phone, setPhone] = useState("");
   let [city, setCity] = useState("");
+
+  const navigate = useNavigate();
 
   let { isOpen, setOpen } = useContext(userContext);
   let { data, isError, error, isLoading } = useCart("getCart", getCart);
@@ -23,7 +27,9 @@ export default function Cart() {
   let { mutate } = useCartCrud(deleteCart);
   let { mutate: mutateupdate, data: updatedData } = useCartCrud(updateCart);
   let { mutate: mutateCheckout, data: checkoutData } = useCartCrud(checkout);
-  console.log(checkoutData);
+
+  let { mutate: mutateCashCheckout, data: checkoutCashData } =
+    useCartCrud(Cashcheckout);
 
   function addAddress(e) {
     let shippingAddress = { details, phone, city };
@@ -31,6 +37,13 @@ export default function Cart() {
     mutateCheckout({ id: data?.data?.data?._id, shippingAddress });
     if (checkoutData?.data?.status === "success")
       window.location.href = checkoutData?.data?.session?.url;
+  }
+
+  function addAddressCash(e) {
+    let shippingAddress = { details, phone, city };
+    e.preventDefault();
+    mutateCashCheckout({ id: data?.data?.data?._id, shippingAddress });
+    if (checkoutCashData?.data?.status === "success") navigate("/allorders");
   }
 
   if (isLoading) return <Loading />;
@@ -129,7 +142,7 @@ export default function Cart() {
           ) : (
             <div className="text-center my-4">
               <h3 className="fw-bold text-main">Cart is Empty</h3>
-              <img className="" src={emptyImg} alt="emptyImg" />
+              <img className="w-100" src={emptyImg} alt="emptyImg" />
             </div>
           )}
         </div>
@@ -192,20 +205,20 @@ export default function Cart() {
                 />
               </form>
             </div>
-            <div className="modal-footer">
+            <div className="modal-footer d-flex align-items-center justify-content-between">
               <button
                 type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
+                className="btn btn-secondary "
+                onClick={addAddressCash}
               >
-                Close
+                Cash
               </button>
               <button
                 type="submit"
                 className="btn bg-main text-white"
                 onClick={addAddress}
               >
-                Save
+                Visa
               </button>
             </div>
           </div>

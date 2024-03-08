@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { BaseUrl } from "../../modal";
+import Loading from "../Loading";
 
 export default function Orders() {
   let encodedToken = localStorage.getItem("userToken");
@@ -35,7 +36,9 @@ export default function Orders() {
   return (
     <div className="container my-4">
       {isLoading ? (
-        <div>Loading...</div>
+        <div>
+          <Loading></Loading>
+        </div>
       ) : isError ? (
         <div>Error: {error.message}</div>
       ) : (

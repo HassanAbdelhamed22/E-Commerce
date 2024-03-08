@@ -36,7 +36,7 @@ export default function ProductUi({ prod }) {
     <div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-3 product-parent">
       <div className="card h-100 product">
         <i
-          className="fa-solid fa-heart fa-1x m-2"
+          className="fa-regular fa-heart fa-1x m-1 cursor-pointer heart-icon"
           style={heart ? { color: "#0aad0a" } : { color: "black" }}
           onClick={() => handleHeartClick(prod._id)}
         />

@@ -3,6 +3,7 @@ import React from "react";
 import Slider from "react-slick";
 import { BaseUrl } from "../modal";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 
 export default function CategorySlider() {
   var settings = {
@@ -36,7 +37,7 @@ export default function CategorySlider() {
         <div className="slider-container mb-3">
           <Slider {...settings}>
             {data?.data?.data.map((ele) => (
-              <>
+              <Link to={`/subCategories/${ele._id}`}>
                 <img
                   className="w-100"
                   height={200}
@@ -45,7 +46,7 @@ export default function CategorySlider() {
                   alt={ele.name}
                 />
                 <p className="text-center">{ele.name}</p>
-              </>
+              </Link>
             ))}
           </Slider>
         </div>

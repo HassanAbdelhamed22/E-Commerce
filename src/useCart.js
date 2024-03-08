@@ -57,6 +57,18 @@ export function checkout({ id, shippingAddress }) {
   );
 }
 
+export function Cashcheckout({ id, shippingAddress }) {
+  return axios.post(
+    `https://ecommerce.routemisr.com/api/v1/orders/${id}`,
+    { shippingAddress },
+    {
+      headers: {
+        token,
+      },
+    }
+  );
+}
+
 export function useCartCrud(fn) {
   const queryClient = useQueryClient();
   return useMutation(fn, {
