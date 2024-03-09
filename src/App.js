@@ -32,7 +32,7 @@ export default function App() {
     setLogin(localStorage.getItem("userName"));
   }, []);
 
-  const routes = createHashRouter([
+  const routes = createBrowserRouter([
     {
       path: "",
       element: <Layout></Layout>,

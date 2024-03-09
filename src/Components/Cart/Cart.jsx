@@ -43,7 +43,8 @@ export default function Cart() {
     let shippingAddress = { details, phone, city };
     e.preventDefault();
     mutateCashCheckout({ id: data?.data?.data?._id, shippingAddress });
-    if (checkoutCashData?.data?.status === "success") navigate("/allorders");
+
+      window.location.href = "/allorders";
   }
 
   if (isLoading) return <Loading />;

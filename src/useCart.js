@@ -7,7 +7,7 @@ let token = localStorage.getItem("userToken");
 
 export function addToCart(productId) {
   return axios.post(
-    `${BaseUrl}api/v1/cart`,
+    `https://ecommerce.routemisr.com/api/v1/cart`,
     { productId },
     {
       headers: {

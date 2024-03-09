@@ -119,16 +119,24 @@ export default function UpdatePass() {
                   style={{ color: "white", borderRadius: "10px" }}
                 >
                   {loading ? (
-                    <TailSpin
-                      visible={true}
-                      height="30"
-                      width="40"
-                      color="#fff"
-                      ariaLabel="tail-spin-loading"
-                      radius="1"
-                      wrapperStyle={{}}
-                      wrapperClass=""
-                    />
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <TailSpin
+                        visible={true}
+                        height={30}
+                        width={40}
+                        color="#fff"
+                        ariaLabel="tail-spin-loading"
+                        radius={1}
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                      />
+                    </div>
                   ) : (
                     "Save"
                   )}

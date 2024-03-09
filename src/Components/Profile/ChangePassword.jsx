@@ -114,16 +114,24 @@ export default function ChangePassword() {
         style={{ color: "white", borderRadius: "10px" }}
       >
         {loading ? (
+          <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <TailSpin
             visible={true}
-            height="30"
-            width="40"
+            height={30}
+            width={40}
             color="#fff"
             ariaLabel="tail-spin-loading"
-            radius="1"
+            radius={1}
             wrapperStyle={{}}
             wrapperClass=""
           />
+        </div>
         ) : (
           "Change Password"
         )}

@@ -7,7 +7,7 @@ let token = localStorage.getItem("userToken");
 
 export function addToWishlist(productId) {
   return axios.post(
-    `${BaseUrl}api/v1/wishlist`,
+    `https://route-ecommerce.onrender.com/api/v1/wishlist`,
     { productId },
     {
       headers: {
