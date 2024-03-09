@@ -1,5 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { RouterProvider, createBrowserRouter, createHashRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createHashRouter,
+} from "react-router-dom";
 import Layout from "./Components/Layout";
 import Login from "./Components/Login/Login";
 import Registration from "./Components/Registration/Registration";
@@ -32,7 +36,7 @@ export default function App() {
     setLogin(localStorage.getItem("userName"));
   }, []);
 
-  const routes = createBrowserRouter([
+  const routes = createHashRouter([
     {
       path: "",
       element: <Layout></Layout>,
